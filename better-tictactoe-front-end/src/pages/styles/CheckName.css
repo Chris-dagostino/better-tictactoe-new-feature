@@ -1,0 +1,17 @@
+p{
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+button {
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
+
+.form{
+    text-align: -webkit-center;
+}
