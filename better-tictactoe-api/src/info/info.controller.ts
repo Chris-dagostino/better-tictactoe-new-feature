@@ -8,7 +8,7 @@ export class InfoController {
   constructor(private readonly infoService: InfoService) {}
 
   @Post('/validate')
-  getConfig(@Body() bodyRequest: UpdateInfoRequest): Promise<BaseResponse> {
-    return this.infoService.validateInfo(bodyRequest);
+  async validateInfo(@Body() bodyRequest: UpdateInfoRequest): Promise<BaseResponse> {
+    return await this.infoService.validateInfo(bodyRequest);
   }
 }

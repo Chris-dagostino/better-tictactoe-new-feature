@@ -8,7 +8,7 @@ import { SelectInput } from '../components/SelectInput';
 import { DateInput } from '../components/DateInput';
 
 export function CheckName() {
-  const [status, setStatus] = useState<'INITIAL' | 'SEND_DATA' | 'SENDING_DATA' | 'DATA_SENDED' | 'ERROR_SENDING_DATA'>();
+  const [status, setStatus] = useState<'INITIAL' | 'SEND_DATA' | 'SENDING_DATA' | 'DATA_SENDED' | 'ERROR_SENDING_DATA'>('INITIAL');
   const [data, setData] = useState<BaseResponse>();
   const [name, setName] = useState<string>('');
   const [age, setAge] = useState<number>(0);
@@ -32,7 +32,7 @@ export function CheckName() {
           name: name,
           age: age,
           married: isMarried,
-          dateOfBirth: dateOfBirth
+          dateOfBirth: dateOfBirth ? dateOfBirth.toISOString() : null
         })
       })
         .then((rawResponse) => {
