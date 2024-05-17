@@ -12,12 +12,26 @@ function isValidDate(dateOfBirth: Date | null, age: number): boolean {
 
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1;
+  const currentDay = currentDate.getDate();
+
   const birthYear = dateOfBirth.getFullYear();
+  const birthMonth = dateOfBirth.getMonth() + 1;
+  const birthDay = dateOfBirth.getDate();
 
-  const calculatedAge = currentYear - birthYear;
+  let calculatedAge = currentYear - birthYear;
 
-  return calculatedAge === age;
+  const hasBirthdayOccurredThisYear = (birthMonth < currentMonth) || 
+                                      (birthMonth === currentMonth && birthDay <= currentDay);
+
+  if (!hasBirthdayOccurredThisYear) {
+    calculatedAge--;
+  }
+
+  return calculatedAge >= age;
 }
+
+
 
 @Injectable()
 export class InfoService {
