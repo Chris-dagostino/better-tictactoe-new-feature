@@ -12,7 +12,7 @@ interface DateInputProps {
   scrollableYearDropdown?: boolean;
 }
 
-export const DateInput: React.FC<DateInputProps> = ({ label, value, onChange, dateFormat = "dd/MM/yyyy", showYearDropdown = true, yearDropdownItemNumber = 30, scrollableYearDropdown = true, ...rest }) => {
+export const DateInput: React.FC<DateInputProps> = ({ label, value, onChange, dateFormat = "dd/MM/yyyy", showYearDropdown = true, yearDropdownItemNumber = 40, scrollableYearDropdown = true, ...rest }) => {
   return (
     <div>
       <p>{label}</p>

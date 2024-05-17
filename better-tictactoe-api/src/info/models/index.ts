@@ -1,5 +1,6 @@
 import { UpdateInfoRequest as UpdateInfoRequestInterface } from '../interfaces';
-import { IsNotEmpty, IsString, MinLength, MaxLength, IsInt, Min, Max, IsBoolean, IsOptional, IsDate } from 'class-validator';
+import { IsNotEmpty, IsString, MinLength, MaxLength, IsInt, Min, Max, IsBoolean, IsOptional, IsDate} from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class UpdateInfoRequest implements UpdateInfoRequestInterface {
   @IsNotEmpty()
@@ -19,6 +20,7 @@ export class UpdateInfoRequest implements UpdateInfoRequestInterface {
   married?: boolean;
 
   @IsNotEmpty()
+  @Type(() => Date)
   @IsDate()
   dateOfBirth: Date;
 }

@@ -32,7 +32,7 @@ export function CheckName() {
           name: name,
           age: age,
           married: isMarried,
-          dateOfBirth: dateOfBirth ? dateOfBirth.toISOString() : null
+          dateOfBirth: dateOfBirth ? new Date (dateOfBirth).toISOString() : null
         })
       })
         .then((rawResponse) => {

@@ -10,8 +10,10 @@ function isValidDate(dateOfBirth: Date | null, age: number): boolean {
     return false;
   }
 
-  const currentYear = new Date().getFullYear();
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
   const birthYear = dateOfBirth.getFullYear();
+
   const calculatedAge = currentYear - birthYear;
 
   return calculatedAge === age;
@@ -43,12 +45,12 @@ export class InfoService {
         errors: [{
           property: 'age',
           constraints: {
-            custom: 'Se sei minorenne, non puoi essere segnalato come sposato.',
+            custom: 'Se è minorenne, non può essere segnalato come sposato.',
           },
         }, {
           property: 'married',
           constraints: {
-            custom: 'Se sei minorenne, non puoi essere segnalato come sposato.',
+            custom: 'Se è minorenne, non può essere segnalato come sposato.',
           },
         }],
       };
