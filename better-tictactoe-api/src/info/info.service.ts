@@ -11,27 +11,19 @@ function isValidDate(dateOfBirth: Date | null, age: number): boolean {
   }
 
   const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth() + 1;
-  const currentDay = currentDate.getDate();
+  const birthDate = new Date(dateOfBirth);
 
-  const birthYear = dateOfBirth.getFullYear();
-  const birthMonth = dateOfBirth.getMonth() + 1;
-  const birthDay = dateOfBirth.getDate();
+  let calculatedAge = currentDate.getFullYear() - birthDate.getFullYear();
 
-  let calculatedAge = currentYear - birthYear;
+  const birthMonthDay = (birthDate.getMonth() + 1) * 100 + birthDate.getDate();
+  const currentMonthDay = (currentDate.getMonth() + 1) * 100 + currentDate.getDate();
 
-  const hasBirthdayOccurredThisYear = (birthMonth < currentMonth) || 
-                                      (birthMonth === currentMonth && birthDay <= currentDay);
-
-  if (!hasBirthdayOccurredThisYear) {
+  if (currentMonthDay < birthMonthDay) {
     calculatedAge--;
   }
 
-  return calculatedAge >= age;
+  return calculatedAge === age;
 }
-
-
 
 @Injectable()
 export class InfoService {
@@ -70,7 +62,7 @@ export class InfoService {
       };
     }
 
-    const dateOfBirth = new Date(data.dateOfBirth);
+    const dateOfBirth = new Date(data.dateOfBirth); // Converti la stringa in un oggetto Date
     if (!isValidDate(dateOfBirth, data.age)) {
       return {
         success: false,
