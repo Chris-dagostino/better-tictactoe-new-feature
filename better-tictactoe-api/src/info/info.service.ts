@@ -25,6 +25,7 @@ function isValidDate(dateOfBirth: Date | null, age: number): boolean {
   return calculatedAge === age;
 }
 
+
 @Injectable()
 export class InfoService {
   async validateInfo(
